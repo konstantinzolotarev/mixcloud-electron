@@ -1,0 +1,32 @@
+{
+  "name": "mixcloud-electron",
+  "version": "1.0.0",
+  "description": "Mixcloud Unofficial desktop app",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/electron/cli.js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/konstantinzolotarev/mixcloud-electron.git"
+  },
+  "keywords": [
+    "mixcloud",
+    "electron",
+    "desktop",
+    "app"
+  ],
+  "author": "Konstantin Zolotarev <konstantin.zolotarev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konstantinzolotarev/mixcloud-electron/issues"
+  },
+  "homepage": "https://github.com/konstantinzolotarev/mixcloud-electron#readme",
+  "devDependencies": {
+    "electron": "^1.3.5"
+  },
+  "dependencies": {
+    "electron-cookies": "^1.1.0"
+  }
+}
