@@ -4,11 +4,13 @@ const {
 } = require('electron')
 const path = require('path')
 const MediaKeys = require('./lib/MediaKeys')
+const Dock = require('./lib/Dock')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 let media
+let dock
 
 function createWindow() {
   // Create the browser window.
@@ -35,6 +37,7 @@ function createWindow() {
 
   // Handle creation of media keys
   media = new MediaKeys(win)
+  dock = new Dock()
 
 
   // Emitted when the window is closed.
