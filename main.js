@@ -2,10 +2,13 @@ const {
   app,
   BrowserWindow
 } = require('electron')
+const path = require('path')
+const MediaKeys = require('./lib/MediaKeys')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
+let media
 
 function createWindow() {
   // Create the browser window.
@@ -14,6 +17,7 @@ function createWindow() {
     height: 1200,
     // frame: true,
     webPreferences: {
+      preload: path.resolve(__dirname, './renderer.js'),
       partition: 'persist:mixcloud',
       nodeIntegration: false,
       webSecurity: false,
@@ -26,32 +30,12 @@ function createWindow() {
   win.loadURL(`https://www.mixcloud.com`)
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // win.openDevTools()
+  // win.webContents.openDevTools()
 
-  // win.webContents.on('new-window', (e, url) => {
-  //   e.preventDefault()
-  //
-  //   let auth = new BrowserWindow({
-  //     width: 800,
-  //     height: 600,
-  //     webPreferences: {
-  //       nodeIntegration: false,
-  //       webSecurity: false,
-  //       plugins: true
-  //     }
-  //   })
-  //
-  //   auth.loadURL(url)
-  //
-  //   auth.webContents.on('did-get-redirect-request', (event, oldUrl, newUrl) => {
-  //     var tokenCode = newUrl.substring(0, newUrl.length).split('hash=')[1]
-  //     console.log('==========================')
-  //     console.log(tokenCode)
-  //     console.log('==========================')
-  //     if (tokenCode)
-  //       auth.loadURL(newUrl)
-  //   })
-  // })
+  // Handle creation of media keys
+  media = new MediaKeys(win)
+
 
   // Emitted when the window is closed.
   win.on('closed', () => {
