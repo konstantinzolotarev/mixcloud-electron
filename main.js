@@ -17,6 +17,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1600,
     height: 1200,
+    title: 'Mixcould',
     // frame: true,
     webPreferences: {
       preload: path.resolve(__dirname, './renderer.js'),
